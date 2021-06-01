@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {{#if dashboard}}
+        Your Dashboard
+        {{else}}
+        The Tech Blog
+        {{#/if}}
+    </title>
+</head>
+<body>
+    <header>
+        <nav>
+            <p>Home</p>
+            <p>Dashboard</p>
+            {{#if login}}
+            <p>Login</p>
+            {{#/if}}
+            <p>Logout</p>
+        </nav>
+        <div>
+            <h1>
+                {{#if dashboard}}
+                <h1>Your Dashboard</h1>
+                {{else}}
+                <h1>The Tech Blog</h1>
+                {{#/if}}
+            </h1>
+        </div>
+    </header>
+    <main>
+        {{{body}}}
+    </main>
+</body>
+</html>
