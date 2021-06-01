@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Post } = require("../models");
+const { Post, User } = require("../models");
 
 router.get("/", async (req, res) => {
   try {
@@ -30,3 +30,5 @@ router.get("/login", (req, res) => {
   }
   res.render("login");
 });
+
+module.exports = router;
