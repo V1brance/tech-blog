@@ -1,39 +1,45 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <title>
-        {{#if dashboard}}
+      {{#if dashboard}}
         Your Dashboard
-        {{else}}
+      {{else}}
         The Tech Blog
-        {{#/if}}
+      {{/if}}
     </title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <nav>
-            <p>Home</p>
-            <p>Dashboard</p>
-            {{#if loggedIn}}
-            <p>Login</p>
-            {{#/if}}
-            <p>Logout</p>
-        </nav>
-        <div>
-            <h1>
-                {{#if dashboard}}
-                <h1>Your Dashboard</h1>
-                {{else}}
-                <h1>The Tech Blog</h1>
-                {{#/if}}
-            </h1>
-        </div>
+      <nav>
+        <p>Home</p>
+        <p>Dashboard</p>
+        {{#unless loggedIn}}
+          <p>Login</p>
+        {{/unless}}
+        <p>Logout</p>
+      </nav>
+      <div class="landingTitle">
+        <h1>
+          {{#if dashboard}}
+            <h1>Your Dashboard</h1>
+          {{else}}
+            <h1>The Tech Blog</h1>
+          {{/if}}
+        </h1>
+      </div>
     </header>
     <main>
-        {{{body}}}
+      {{{body}}}
     </main>
-</body>
+  </body>
 </html>

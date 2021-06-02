@@ -1,9 +1,10 @@
 {{#if posts}}
+  <h2>Your Post History</h2>
   {{#each posts as |post|}}
     <div>
       <h3>{{post.title}}</h3>
       <p>{{post.post_text}}</p>
-      <p>Created by {{user.username}}</p>
+      <p>Created by {{user.username}} at {{post.createdAt}}</p>
     </div>
   {{/each}}
 {{else}}
@@ -11,8 +12,4 @@
     <h3>No Posts Yet</h3>
     <p>Register an account to create our first post!</p>
   </div>
-{{/if}}
-
-{{#if loggedIn}}
-  <button>Create Post</button>
 {{/if}}
