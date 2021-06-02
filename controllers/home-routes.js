@@ -23,13 +23,20 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/dashboard", async (req, res) => {
+router.get("/dashboard/:user", async (req, res) => {
   try {
     let userPostData = {};
     if (req.session.loggedIn) {
+      userID = await User.findAll({
+        where: {
+          username: req.params.user,
+        },
+      });
+      const user = userID[0].get({ plain: true });
+      console.log(user);
       userPostData = await Post.findAll({
         where: {
-          user_id: req.body.user_id,
+          user_id: user.id,
         },
       });
     } else {

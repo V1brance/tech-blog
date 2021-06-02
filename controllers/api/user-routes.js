@@ -8,7 +8,7 @@ router.post("/", async (req, res) => {
       password: req.body.password,
     });
 
-    res.session.save(() => {
+    req.session.save(() => {
       req.session.loggedIn = true;
 
       res.status(200).json(dbUserData);
@@ -40,12 +40,13 @@ router.post("/login", async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: "Incorrect email or password. Please try again!" });
+        .json({ message: "Incorrect username or password. Please try again!" });
       return;
     }
 
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.user = req.body.username;
 
       res
         .status(200)
@@ -54,6 +55,15 @@ router.post("/login", async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
+  }
+});
+
+router.get("/login", (req, res) => {
+  const user = req.session.user;
+  if (user) {
+    res.status(200).json(user);
+  } else {
+    res.status(404).json({ message: "No user is logged in" });
   }
 });
 

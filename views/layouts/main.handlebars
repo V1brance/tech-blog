@@ -21,12 +21,18 @@
   <body>
     <header>
       <nav>
-        <p>Home</p>
-        <p>Dashboard</p>
+        <a href="/">Home</a>
+        {{#if loggedIn}}
+          <a href="#" id="dashboardButton">Dashboard</a>
+          <script src="./js/dashboard.js"></script>
+        {{/if}}
         {{#unless loggedIn}}
-          <p>Login</p>
+          <a href="/login">Login</a>
         {{/unless}}
-        <p>Logout</p>
+        <a href="#" id="logoutButton">Logout</a>
+        {{#if loggedIn}}
+          <script src="./js/logout.js"></script>
+        {{/if}}
       </nav>
       <div class="landingTitle">
         <h1>

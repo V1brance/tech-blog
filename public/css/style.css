@@ -11,8 +11,10 @@ nav {
   font-size: 20px;
 }
 
-nav p {
+nav a {
   margin: 0 1vw;
+  text-decoration: none;
+  color: black;
 }
 
 .landingTitle {
